@@ -8,7 +8,7 @@ source "$segment_path/../lib.sh"
 tmux_path=$(get_tmux_cwd)
 cd "$tmux_path"
 
-branch_symbol="⭠"
+branch_symbol=""
 git_colour="colour5"
 git_svn_colour="colour34"
 svn_colour="colour220"
@@ -34,14 +34,15 @@ parse_git_branch() {
 	echo "$branches" | grep "remotes/git-svn" &>/dev/null
 	is_gitsvn=$([ "$?" -eq 0 ] && echo 1 || echo 0)
 
-	echo  -n "#[fg="
-	if [ "$is_gitsvn" -eq "0" ]; then
-		echo -n "$git_colour"
-	else
-		echo -n "$git_svn_colour"
-	fi
-	# TODO pass colour arguments as paramters/globals to segments?
-	echo "]${branch_symbol} #[fg=colour42]${branch}"
+	# echo  -n "#[fg="
+	# if [ "$is_gitsvn" -eq "0" ]; then
+	# 	echo -n "$git_colour"
+	# else
+	# 	echo -n "$git_svn_colour"
+	# fi
+	# # TODO pass colour arguments as paramters/globals to segments?
+	# echo "]${branch_symbol}#[fg=colour42]${branch}"
+	echo "${branch}"
 }
 
 # Show SVN branch.
