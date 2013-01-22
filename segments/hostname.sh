@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 # Prints the hostname
 uid=$(id -u)
 host=$(hostname -s)
